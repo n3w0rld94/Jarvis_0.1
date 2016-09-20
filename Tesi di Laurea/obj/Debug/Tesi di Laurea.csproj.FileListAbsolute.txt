@@ -1,0 +1,9 @@
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\bin\Debug\Tesi di Laurea.exe.config
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\bin\Debug\Tesi di Laurea.exe
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\bin\Debug\Tesi di Laurea.pdb
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Debug\Tesi di Laurea.csprojResolveAssemblyReference.cache
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Debug\Tesi_di_Laurea.Form1.resources
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Debug\Tesi_di_Laurea.Properties.Resources.resources
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Debug\Tesi di Laurea.csproj.GenerateResource.Cache
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Debug\Tesi di Laurea.exe
+c:\users\shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Debug\Tesi di Laurea.pdb

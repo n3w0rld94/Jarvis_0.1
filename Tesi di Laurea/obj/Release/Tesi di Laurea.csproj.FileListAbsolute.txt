@@ -1,0 +1,14 @@
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\bin\Release\Tesi di Laurea.exe.config
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\bin\Release\Tesi di Laurea.exe
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\bin\Release\Tesi di Laurea.pdb
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Tesi_di_Laurea.Form1.resources
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Tesi_di_Laurea.Properties.Resources.resources
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Tesi di Laurea.csproj.GenerateResource.Cache
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Tesi di Laurea.exe
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Tesi di Laurea.pdb
+C:\Users\Shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Tesi di Laurea.csprojResolveAssemblyReference.cache
+C:\Users\Shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Interop.FileSyncApiLib.dll
+C:\Users\Shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Interop.FileSyncLibrary.dll
+C:\Users\Shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Interop.IMEFILES.dll
+C:\Users\Shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Interop.ShellExtensionLib.dll
+C:\Users\Shea\documents\visual studio 2015\Projects\Tesi di Laurea\Tesi di Laurea\obj\Release\Tesi di Laurea.csproj.ResolveComReference.cache
