@@ -10,15 +10,18 @@ namespace ANN
         public short[] NumPercept; //Numero di Percettroni in ciascuno strato
         public short NumLayers; //Numero di strato
         double Bias = 1; //Costante euristica (ricavata in trial & error)
-        
+        public Layer[] strat;
+
+
+
         //Costruttore: legge da utente i parametri essenziali della Rete Neurale Feed-Forward
         public FFANN()
         {
             do {
                 Console.WriteLine("Inserisci il numero di strati della rete (Minimo Due): ");
                 NumLayers = (short)int.Parse(Console.ReadLine());
-            } while (NumLayers<2);
-            NumPercept = new short[NumLayers+1];
+            } while (NumLayers < 2);
+            NumPercept = new short[NumLayers + 1];
 
             do
             {
@@ -29,43 +32,63 @@ namespace ANN
                     NumPercept[i] = (short)int.Parse(Console.ReadLine());
                 }
 
-            } while ((NumPercept[0]==0)||(NumPercept[NumLayers-1]==0));
+            } while ((NumPercept[0] == 0) || (NumPercept[NumLayers - 1] == 0));
             NumPercept[NumLayers] = 0;
-
         }
-        //End Costruttore
 
+
+
+        //Inizializzo la rete neurale creando i vari strati e percettroni.
         public void build()
         {
-            Layer[] strat = new Layer[NumLayers];
-            for (int i=0; i < NumLayers; i++)
+            strat = new Layer[NumLayers];
+            for (int i = 0; i < NumLayers; i++)
             {
                 strat[i] = new Layer((short)i);
             }
         }
+        //End Build
+
+
+        public void Predict(int[][] DataSet)
+        {
+
+        }
+
+    }
+
+
+
+    public class Executor
+    {
         static void Main(string[] args)
         {
             FFANN ffann = new FFANN();
             Layer[] strat = new Layer[ffann.NumLayers];
-            Train trainer = new Train();
-            trainer.RPropPlus(ffann);
-
+            int[][] DataSet = new int[2][];
+            Train trainer = new Train(ffann);
+            ffann.Predict(DataSet);
         }
     }
+
+
 
     class Layer : FFANN
     {
         public short N; //numero identificativo layer
+        public Perceptron[] percept;
         public Layer(short n)
         {
             N = n;
-            Perceptron[] percept = new Perceptron[NumPercept[n]];
-            for(int i = 0; i<NumPercept[n]; i++)
+            percept = new Perceptron[NumPercept[n]];
+            for (int i = 0; i < NumPercept[n]; i++)
             {
-                percept[i]=new Perceptron(n);
-            } 
+                percept[i] = new Perceptron(n);
+            }
         }
     }
+
+
 
     sealed class Perceptron : Layer
     {
@@ -75,10 +98,10 @@ namespace ANN
 
         public Perceptron(short n) : base(n)
         {
-            NumSynapses = NumPercept[N+1];
+            NumSynapses = NumPercept[N + 1];
             synapsys = new double[NumSynapses];
             Random rand = new Random();
-            for(int i = 0; i < NumSynapses; i++)
+            for (int i = 0; i < NumSynapses; i++)
             {
                 synapsys[i] = rand.Next();
             }
@@ -86,10 +109,10 @@ namespace ANN
 
         public void weightrecalc()
         {
-            for(int i = 0; i < NumPercept[this.N + 1]; i++)
+            for (int i = 0; i < NumPercept[this.N + 1]; i++)
             {
                 synapsys[i] = 0;
-            }   
+            }
         }
 
         public void ActionCalc(Perceptron Per)
@@ -100,9 +123,14 @@ namespace ANN
 
     }
 
-    class Activation
+    
+    
+    //Questa classe astratta contiene tutti i metodi corrispondenti alle funzioni di attivazione principali,
+    //Semplici formule matematiche
+
+    abstract class Activation
     {
-        private double Sigmoid(double x)
+        private double LogisticSigmoid(double x)
         {
             x = 1 / (1 - Math.Pow(Math.E, -x));
             return x;
@@ -110,45 +138,138 @@ namespace ANN
 
         private double HiperTan(double x)
         {
-            x=(Math.Pow(Math.E, x) - Math.Pow(Math.E, -x))/(Math.Pow(Math.E, x) + Math.Pow(Math.E, -x));
+            x = (Math.Pow(Math.E, x) - Math.Pow(Math.E, -x)) / (Math.Pow(Math.E, x) + Math.Pow(Math.E, -x));
             return x;
         }
 
         private bool HeivisideStep(double x)
         {
-            return (x>=0);
+            return (x >= 0);
         }
 
         private double[] Softmax(double[] x, FFANN ffann)
         {
             double TotalDivisor = 0;
-            for (int i = 0; i < ffann.NumOut; i++)
+            for (int i = 0; i < ffann.NumPercept[ffann.NumLayers]; i++)
                 TotalDivisor += Math.Pow(Math.E, x[i]);
-            for (int i = 0; i < ffann.NumOut; i++)
+            for (int i = 0; i < ffann.NumPercept[ffann.NumLayers]; i++)
                 x[i] = Math.Pow(Math.E, x[i]) / TotalDivisor;
             return x;
         }
     }
 
+
+
     class Train
     {
-        public void RPropPlus(FFANN ffann)
+        public Train trainer;
+        int[][] DataSet;
+        public Train(FFANN ffann)
         {
-            
+            Console.WriteLine("\nSeleziona Algoritmo di allenamento. 0(RProp+)  1(GA)  2(PSO): ");
+            short m = (short)int.Parse(Console.ReadLine());
+            switch (m)
+            {
+                case 0:
+                    trainer = new RPropPlus(ffann);
+                    break;
+                case 1:
+                    trainer = new Genetic(ffann);
+                    break;
+                case 2:
+                    trainer = new Particle_swarm_optimization(ffann);
+                    break;
+            }
+            PreTrain(trainer);
+            TrainOnSet(trainer, DataSet);
+        }
 
+        //Effettua il training sul training set
+        private void TrainOnSet(Train Alg, int[][] DataSet)
+        {
 
         }
 
-        public void Genetic()
+        private void PreTrain(Train trainer)
         {
 
         }
-
-        public void Particle_swarm_optimization()
-        {
-
-        }
-
 
     }
+
+
+
+    class RPropPlus : Train
+    {
+            const double LearnRatePlus = 1.2, LearnRateMinus = 0.5;
+
+        public RPropPlus(FFANN ffann): base(ffann)
+        {
+            for (int i = 0; i < ffann.NumLayers; i++)
+            {
+                Console.WriteLine(ffann.strat[i].percept.Equals(LearnRateMinus));
+                Console.WriteLine(ffann.strat[i].percept.Equals(LearnRatePlus));
+            }
+        }
+
+    }
+
+
+
+    class Genetic : Train
+    {
+        double Fitness;
+
+        public Genetic(FFANN ffann): base(ffann)
+        {
+            Random Rand = new Random();
+            Fitness = Rand.NextDouble();
+        }
+
+
+        private void Cross(FFANN ffann)
+        {
+
+        }
+
+        private void Mutate(FFANN ffann)
+        {
+
+        }
+
+        private void Reproduce()
+        {
+
+        }
+
+    }
+
+
+
+    class Particle_swarm_optimization : Train
+    {
+        double Cohesion, Separation;
+
+        public Particle_swarm_optimization(FFANN ffann): base(ffann)
+        {
+            Random Rand = new Random();
+            Cohesion = Rand.NextDouble();
+            Separation = Rand.NextDouble();
+            TrainOnSet();
+        }
+
+        private void TrainOnSet()
+        {
+
+        }
+
+        public void PreTrain()
+        {
+
+        }
+    
+    }
+
+    
+
 }
