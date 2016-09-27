@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ANN
@@ -9,7 +7,6 @@ namespace ANN
     class Train
     {
         public Train trainer;
-        int[][] DataSet;
         public Train(FFANN ffann)
         {
             Console.WriteLine("\nSeleziona Algoritmo di allenamento. 0(RProp+)  1(GA)  2(PSO): ");
@@ -26,12 +23,10 @@ namespace ANN
                     trainer = new Particle_swarm_optimization(ffann);
                     break;
             }
-            PreTrain(trainer);
-            TrainOnSet(trainer, DataSet);
         }
 
         //Effettua il training sul training set
-        private void TrainOnSet(Train Alg, int[][] DataSet)
+        private void TrainOnSet(Train Alg, double[][] stdDataset)
         {
 
         }
@@ -42,8 +37,6 @@ namespace ANN
         }
 
     }
-
-
 
     class RPropPlus : Train
     {
@@ -59,8 +52,6 @@ namespace ANN
         }
 
     }
-
-
 
     class Genetic : Train
     {
@@ -89,8 +80,6 @@ namespace ANN
         }
 
     }
-
-
 
     class Particle_swarm_optimization : Train
     {

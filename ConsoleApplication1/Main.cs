@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using ANN;
 
 namespace ANN
 {
@@ -10,21 +12,40 @@ namespace ANN
     {
         static void Main(string[] args)
         {
-            string[][] DataSet=new string[5][];
-            string[] colTypes = new string[5];
+            string[][] Dataset;
+            double[][] stdDataset;
+            string[] colTypes;
+            
+            //Segmento di prova per la standardizzazione dei dati in ingresso (Solo numerici e categorici, no audio/immagini)
+            string buffer;
+            string datasetPath = "C:/Users/Shea/Documents/Visual Studio 2015/Projects/ConsoleApplication1/Dataset.txt";
+
+            int numSamples;
             int i = 0;
-            Console.WriteLine("Inserisci dati da normalizzare");
-            do
+
+            StreamReader reader = new StreamReader(datasetPath);
+            colTypes = reader.ReadLine().Split(' ');
+            numSamples = File.ReadAllLines(datasetPath).Length - 1;
+            Dataset = new string[numSamples][];
+
+            while ((buffer = reader.ReadLine()) != null)
             {
-                DataSet[i][] = Console.ReadLine();
-                i++;
-            } while (i < 5);
-            Standardizer std = new Standardizer(DataSet, colTypes);
-            /* FFANN ffann = new FFANN();
-            Layer[] strat = new Layer[ffann.NumLayers];
-            int[][] DataSet = new int[2][];
-            Train trainer = new Train(ffann);
-            ffann.Predict(DataSet);*/
+                Dataset[i++] = buffer.Split(' ');
+            };
+
+            Standardizer std = new Standardizer(Dataset, colTypes);
+            stdDataset = std.StandardizeAll(Dataset);
+            Helpers helper = new Helpers();
+            helper.ShowMatrix(stdDataset, numSamples, colTypes.Length);
+            Console.ReadKey();
+            //Fine segmento di Prova
+
+
+            FFANN ffann = new FFANN(colTypes.Length, stdDataset[].Length - Dataset[].Length);
+            ffann.build();
+            /*Train trainer = new Train(ffann);
+            ffann.Predict(stdDataset);*/
         }
+
     }
 }

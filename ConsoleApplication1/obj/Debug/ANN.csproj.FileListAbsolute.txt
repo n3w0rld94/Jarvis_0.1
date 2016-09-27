@@ -1,7 +1,6 @@
-c:\users\shea\documents\visual studio 2015\Projects\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-c:\users\shea\documents\visual studio 2015\Projects\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
-c:\users\shea\documents\visual studio 2015\Projects\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
 c:\users\shea\documents\visual studio 2015\Projects\ConsoleApplication1\obj\Debug\ANN.csprojResolveAssemblyReference.cache
-c:\users\shea\documents\visual studio 2015\Projects\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
-c:\users\shea\documents\visual studio 2015\Projects\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
 c:\users\shea\documents\visual studio 2015\Projects\ConsoleApplication1\bin\Debug\ANN.exe.config
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\ConsoleApplication1\bin\Debug\ANN.exe
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\ConsoleApplication1\bin\Debug\ANN.pdb
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\ConsoleApplication1\obj\Debug\ANN.exe
+C:\Users\Shea\Documents\Visual Studio 2015\Projects\ConsoleApplication1\obj\Debug\ANN.pdb

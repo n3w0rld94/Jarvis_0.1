@@ -29,45 +29,55 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ANN.Standardizer" Collapsed="true">
-    <Position X="4.5" Y="1.25" Width="1.5" />
+    <Position X="1.25" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AEACAAAAAAggAAABAAAAAAAAgAAAAAAAACIQAAAAAAA=</HashCode>
       <FileName>Normalization.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ANN.Train" Collapsed="true">
-    <Position X="4.5" Y="4" Width="1.5" />
+    <Position X="7.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAABAAAAAAggAAAAA=</HashCode>
       <FileName>Training.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ANN.RPropPlus" Collapsed="true">
-    <Position X="2.75" Y="5" Width="1.5" />
+    <Position X="6" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Training.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ANN.Genetic" Collapsed="true">
-    <Position X="4.5" Y="5" Width="1.5" />
+    <Position X="3" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAACACAAAAAAAA=</HashCode>
       <FileName>Training.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ANN.Particle_swarm_optimization" Collapsed="true">
-    <Position X="6.25" Y="5" Width="1.5" />
+    <Position X="0.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Training.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ANN.Executor" Collapsed="true">
-    <Position X="2.75" Y="0.5" Width="5" />
+    <Position X="1.25" Y="0.5" Width="8" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Helpers" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Normalization.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

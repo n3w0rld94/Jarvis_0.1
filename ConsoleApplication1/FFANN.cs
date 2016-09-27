@@ -7,24 +7,25 @@ namespace ANN
     class FFANN
     {
         //Parametri della rete
-        public short[] NumPercept; //Numero di Percettroni in ciascuno strato
-        public short NumLayers; //Numero di strato
-        double Bias = 1; //Costante euristica (ricavata in trial & error)
+        public short[] NumPercept;  //Numero di Percettroni in ciascuno strato
+        public short NumLayers = 2; //Numero di strato
+        double Bias = 1;            //Costante euristica (ricavata in trial & error)
         public Layer[] strat;
 
 
 
         //Costruttore: legge da utente i parametri essenziali della Rete Neurale Feed-Forward
-        public FFANN()
+        public FFANN(int numCols, int numOut)
         {
-            do
+            /*do
             {
                 Console.WriteLine("Inserisci il numero di strati della rete (Minimo Due): ");
                 NumLayers = (short)int.Parse(Console.ReadLine());
-            } while (NumLayers < 2);
+            } while (NumLayers < 2);*/
+
             NumPercept = new short[NumLayers + 1];
 
-            do
+            /*do
             {
                 Console.WriteLine("Inserisci il numero di unità di elaborazione per ogni strato: ");
                 for (int i = 0; i < NumLayers; i++)
@@ -33,7 +34,10 @@ namespace ANN
                     NumPercept[i] = (short)int.Parse(Console.ReadLine());
                 }
 
-            } while ((NumPercept[0] == 0) || (NumPercept[NumLayers - 1] == 0));
+            } while ((NumPercept[0] == 0) || (NumPercept[NumLayers - 1] == 0));*/
+            
+            NumPercept[0] = (short)numCols;
+            NumPercept[1] = (short)numOut;
             NumPercept[NumLayers] = 0;
         }
 
@@ -51,7 +55,7 @@ namespace ANN
         //End Build
 
 
-        public void Predict(int[][] DataSet)
+        public void Predict(double[][] DataSet)
         {
 
         }
