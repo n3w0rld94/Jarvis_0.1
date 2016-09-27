@@ -217,11 +217,15 @@ namespace ANN
                 double[] stdRow = this.GetStandardRow(rawData[i]);
                 result[i] = stdRow;
             }
+
+            Helpers h = new Helpers();
             return result;
+            
         }
 
         
     }
+
     public class Helpers
     {
         public void ShowMatrix(double[][] Matrix, int numSamples, int numCols)
@@ -236,6 +240,10 @@ namespace ANN
             }
         }
 
+        public void ShowNetwork(FFANN ffan)
+        {
+
+        }
     }
 
 }

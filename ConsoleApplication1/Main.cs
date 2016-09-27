@@ -14,6 +14,7 @@ namespace ANN
         {
             string[][] Dataset;
             double[][] stdDataset;
+            double[] data;
             string[] colTypes;
             
             //Segmento di prova per la standardizzazione dei dati in ingresso (Solo numerici e categorici, no audio/immagini)
@@ -27,6 +28,7 @@ namespace ANN
             colTypes = reader.ReadLine().Split(' ');
             numSamples = File.ReadAllLines(datasetPath).Length - 1;
             Dataset = new string[numSamples][];
+            data = new double[colTypes.Length];
 
             while ((buffer = reader.ReadLine()) != null)
             {
@@ -41,10 +43,13 @@ namespace ANN
             //Fine segmento di Prova
 
 
-            FFANN ffann = new FFANN(colTypes.Length, stdDataset[].Length - Dataset[].Length);
-            ffann.build();
-            /*Train trainer = new Train(ffann);
-            ffann.Predict(stdDataset);*/
+            FFANN ffann = new FFANN(colTypes.Length, stdDataset[0].Length - Dataset[0].Length); //Setting Network parameters.
+            ffann.build();  //Create & initialize the Network.
+            //Train trainer = new Train(ffann);
+            Console.WriteLine("Inserire i dati di prova");
+            string[] buff = Console.ReadLine().Split(' ');
+            data = std.GetStandardRow(buff);
+            ffann.Predict(data);
         }
 
     }

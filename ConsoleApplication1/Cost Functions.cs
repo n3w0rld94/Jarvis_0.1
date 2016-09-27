@@ -9,7 +9,7 @@ namespace ANN
     //Questa classe astratta contiene tutti i metodi corrispondenti alle funzioni di attivazione principali,
     //Semplici formule matematiche
 
-    abstract class Activation
+    class Activation
     {
         public double LogisticSigmoid(double x)
         {
@@ -28,14 +28,15 @@ namespace ANN
             return (x >= 0);
         }
 
-        public double[] Softmax(double[] x, FFANN ffann)
+        //ritorna il vettore probabilità
+        public Layer Softmax(Layer layer)
         {
             double TotalDivisor = 0;
-            for (int i = 0; i < ffann.NumPercept[ffann.NumLayers]; i++)
-                TotalDivisor += Math.Pow(Math.E, x[i]);
-            for (int i = 0; i < ffann.NumPercept[ffann.NumLayers]; i++)
-                x[i] = Math.Pow(Math.E, x[i]) / TotalDivisor;
-            return x;
+            for (int i = 0; i < layer.NumPercept[layer.NumLayers]; i++)
+                TotalDivisor += Math.Pow(Math.E, layer.perceptron[i].getAction());
+            for (int i = 0; i < layer.NumPercept[layer.NumLayers]; i++)
+                layer.perceptron[i].setAction(Math.Pow(Math.E, layer.perceptron[i].getAction()) / TotalDivisor);
+            return layer;
         }
     }
 }

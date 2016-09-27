@@ -46,8 +46,8 @@ namespace ANN
         {
             for (int i = 0; i < ffann.NumLayers; i++)
             {
-                Console.WriteLine(ffann.strat[i].percept.Equals(LearnRateMinus));
-                Console.WriteLine(ffann.strat[i].percept.Equals(LearnRatePlus));
+                Console.WriteLine(ffann.layer[i].perceptron.Equals(LearnRateMinus));
+                Console.WriteLine(ffann.layer[i].perceptron.Equals(LearnRatePlus));
             }
         }
 
