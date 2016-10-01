@@ -32,9 +32,9 @@ namespace ANN
         public Layer Softmax(Layer layer)
         {
             double TotalDivisor = 0;
-            for (int i = 0; i < layer.NumPercept[layer.NumLayers]; i++)
+            for (int i = 0; i < layer.ffann.NumPercept[layer.ffann.NumLayers]; i++)
                 TotalDivisor += Math.Pow(Math.E, layer.perceptron[i].getAction());
-            for (int i = 0; i < layer.NumPercept[layer.NumLayers]; i++)
+            for (int i = 0; i < layer.ffann.NumPercept[layer.ffann.NumLayers]; i++)
                 layer.perceptron[i].setAction(Math.Pow(Math.E, layer.perceptron[i].getAction()) / TotalDivisor);
             return layer;
         }

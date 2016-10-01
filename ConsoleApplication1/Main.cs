@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using ANN;
 
 namespace ANN
 {
@@ -38,19 +33,21 @@ namespace ANN
             Standardizer std = new Standardizer(Dataset, colTypes);
             stdDataset = std.StandardizeAll(Dataset);
             Helpers helper = new Helpers();
-            helper.ShowMatrix(stdDataset, numSamples, colTypes.Length);
+            helper.ShowMatrix(stdDataset, numSamples, stdDataset[0].Length);
             Console.ReadKey();
             //Fine segmento di Prova
 
 
-            FFANN ffann = new FFANN(colTypes.Length, stdDataset[0].Length - Dataset[0].Length); //Setting Network parameters.
+            FFANN ffann = new FFANN(colTypes.Length, stdDataset[0].Length - Dataset[0].Length + 1); //Setting Network parameters.
             ffann.build();  //Create & initialize the Network.
-            //Train trainer = new Train(ffann);
+            RPropPlus trainer = new RPropPlus(ffann, stdDataset);
+            helper.ShowNetwork(ffann);
             Console.WriteLine("Inserire i dati di prova");
             string[] buff = Console.ReadLine().Split(' ');
             data = std.GetStandardRow(buff);
-            ffann.Predict(data);
+            ffann.PredictShow(data);
+            Console.ReadKey();
         }
-
     }
 }
+

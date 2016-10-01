@@ -240,9 +240,12 @@ namespace ANN
             }
         }
 
-        public void ShowNetwork(FFANN ffan)
+        public void ShowNetwork(FFANN ffann)
         {
-
+            for(int i = 0; i < ffann.NumLayers; i++)
+            {
+                ffann.layer[i].showLayerAction();
+            }
         }
     }
 
