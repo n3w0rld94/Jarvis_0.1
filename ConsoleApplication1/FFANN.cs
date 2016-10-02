@@ -27,9 +27,9 @@ namespace ANN
             NumPercept = new short[NumLayers + 1];
             
             NumPercept[0] = (short)(numCols-1);
-            NumPercept[1] = (short)4;
+            NumPercept[1] = 5;
             NumPercept[2] = (short)numOut;
-            NumPercept[NumLayers] = (short)0;
+            NumPercept[NumLayers] = 0;
         }
         
         //Inizializzo la rete neurale creando i vari strati e percettroni.

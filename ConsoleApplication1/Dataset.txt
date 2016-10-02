@@ -3,4 +3,7 @@ numeric categorical numeric categorical categorical
 76 female 95 genitor cosa
 39 female 125 politician animale
 45 male 567 genitor edificio
-100 male 256 politician terra
+100 male 256 politician persona
+56 male 876 genitor animale
+77 female 524 actor cosa
+98 female 923 politician edificio

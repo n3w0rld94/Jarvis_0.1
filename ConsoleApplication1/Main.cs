@@ -46,6 +46,7 @@ namespace ANN
             string[] buff = Console.ReadLine().Split(' ');
             data = std.GetStandardRow(buff);
             ffann.PredictShow(data);
+
             Console.ReadKey();
         }
     }
