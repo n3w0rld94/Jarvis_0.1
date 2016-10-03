@@ -97,6 +97,17 @@ namespace ANN
                         for (int k = 0; k < ffann.NumPercept[j]; k++)
                             for (int q = 0; q < ffann.NumPercept[j + 1]; q++)
                                 ffann.layer[j].perceptron[k].setSynapsys(ffann.layer[j].perceptron[k].getSynapsys(q) - delta[j][k][q], q);
+                    //Azzaro dterr alla fine della valutazione di ogni esemio. 
+                    for (int i = 0; i < ffann.NumLayers-1; i++)
+                    {
+                
+                        for(int z = 0; z < ffann.NumPercept[i]; z++)
+                        {
+                            dterr[i][z] = 0;
+                        }
+                    }
+                    //Fine Azzeramento.
+
                 }
                 epochs++;
                 if(epochs % 1000 == 0)
