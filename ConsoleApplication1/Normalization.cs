@@ -217,13 +217,8 @@ namespace ANN
                 double[] stdRow = this.GetStandardRow(rawData[i]);
                 result[i] = stdRow;
             }
-
-            Helpers h = new Helpers();
             return result;
-            
         }
-
-        
     }
 
     public class Helpers
@@ -246,6 +241,17 @@ namespace ANN
             {
                 ffann.layer[i].showLayerAction();
             }
+        }
+
+        public void ShowWeights(FFANN ffann)
+        {
+            for (int i = 0; i < ffann.NumLayers; i++)
+                for (int j = 0; j < ffann.NumPercept[i]; j++)
+                {
+                    Console.Write("\n");
+                    for (int k = 0; k < ffann.layer[i].perceptron[j].NumSynapses; k++)
+                        Console.WriteLine("Layer " + i + " percettrone " + j + " sinapsi " + k + ": " + ffann.layer[i].perceptron[j].getSynapsys(k));
+                }
         }
     }
 

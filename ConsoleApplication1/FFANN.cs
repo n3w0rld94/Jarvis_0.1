@@ -9,7 +9,7 @@ namespace ANN
         //Parametri della rete
         public short NumLayers = 3; //Numero di strati.
         public short[] NumPercept;  //Numero di Percettroni in ciascuno strato (in ordine da strato 0 a numLayers-1).
-       
+        Random rand = new Random(); 
         const double Bias = 1;      //Costante euristica (ricavata in trial & error)
         public Layer[] layer;
         
@@ -27,7 +27,7 @@ namespace ANN
             NumPercept = new short[NumLayers + 1];
             
             NumPercept[0] = (short)(numCols-1);
-            NumPercept[1] = 5;
+            NumPercept[1] = 3;
             NumPercept[2] = (short)numOut;
             NumPercept[NumLayers] = 0;
         }
@@ -38,7 +38,7 @@ namespace ANN
             layer = new Layer[NumLayers];
             for (int i = 0; i < NumLayers; i++)
             {
-                layer[i] = new Layer((short)i, this);
+                layer[i] = new Layer((short)i, this, rand);
             }
         }
         //End Build
@@ -87,14 +87,17 @@ namespace ANN
                 for (k = 0; k < NumPercept[i]; k++) //Scorro i percettroni dello strato di partenza.
                     sum += layer[i].perceptron[k].getAction() * layer[i].perceptron[k].getSynapsys(j); /* moltiplica potenziale d'azione 
                                                                                                         * per peso sinaptico della connessione 
-                                                                                                        * col neurone j dello strato successivo.*/
-                sum += Bias; //Se non lo capisci non continuare a leggere e ristudiati la teoria prima.
+                                                                                                        * fra k e j.*/
+                
+                sum += Bias;//Se non lo capisci non continuare a leggere e ristudiati la teoria prima.
                 layer[i + 1].perceptron[j].setAction(act.LogisticSigmoid(sum)); /* Applica la funzione di costo e assegna il nuovo 
-                                                                                 * potenziale d'azione.*/                                                           
+                                                                                 * potenziale d'azione.*/
+                sum = 0; //Azzero l'accumulatore                                                            
             }
-             /*per applicare il softmax, decommenta questo segmento.
-             layer[i+1].setLayerAction(softmax(layer[i+1]));
-             */
+             /*per applicare il softmax, decommenta questo segmento.*/
+             /*if(i == NumLayers - 1)
+                act.Softmax(layer[i+1]);*/
+             
         }
     }
 
@@ -106,16 +109,17 @@ namespace ANN
         public Perceptron[] perceptron;
         public FFANN ffann;
 
-        public Layer(short n, FFANN parent)
+        public Layer(short n, FFANN parent, Random rand)
         {
             N = n;
             ffann = parent;
             perceptron = new Perceptron[ffann.NumPercept[N]];
             for (int i = 0; i < ffann.NumPercept[N]; i++)
             {
-                perceptron[i] = new Perceptron(i, this);
+                perceptron[i] = new Perceptron(i, this, rand);
             }
         }
+
         public void showLayerAction()
         {
             Console.WriteLine("Layer " +  N + ":\n");
@@ -137,7 +141,7 @@ namespace ANN
         Layer layer;
         double[] synapsys; //Peso di ciascun collegamento neurone-neurone fra strati consecutivi
         double action = 0; //Valore passato durante Train/Prediction
-        int NumSynapses;
+        public int NumSynapses;
         int nOrder; //Indica l'indice del percettrone nel vettore perceptron del corrispettivo layer.
         
 
@@ -166,33 +170,18 @@ namespace ANN
         {
             return nOrder;
         }
-
-        /*public double getPotential()
-        {
-            if (layer.N != 0)
-            {
-                double sum = 0;
-                for(int i = 0; i < layer.ffann.NumPercept[N-1]; i++)
-                    sum += layer[N - 1].perceptron[i].getAction() * layer[N - 1].perceptron[i].getSynapsys(nOrder);
-                return sum;
-            }
-                
-            return action;
-        }*/
         //end protection methods
         
         //Costruttore di percettroni, inizializza i pesi sinaptici con valori casuali
-        public Perceptron(int i, Layer parent)
+        public Perceptron(int i, Layer parent, Random rand)
         {
-            Random rand = new Random(); 
+            
             layer = parent;
             NumSynapses = layer.ffann.NumPercept[layer.N + 1];
             nOrder = i;
             synapsys = new double[NumSynapses];
             for (int j = 0; j < NumSynapses; j++)
-            {
-                synapsys[j] = rand.Next();
-            }
+                synapsys[j] = rand.NextDouble();
         }
     }
 }

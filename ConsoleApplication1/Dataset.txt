@@ -1,9 +1,17 @@
-numeric categorical numeric categorical categorical
-98 male 687 actor persona
-76 female 95 genitor cosa
-39 female 125 politician animale
-45 male 567 genitor edificio
-100 male 256 politician persona
-56 male 876 genitor animale
-77 female 524 actor cosa
-98 female 923 politician edificio
+categorical numeric categorical
+male 687 Rich
+female 95 Poor
+female 25 Poor
+male 567 Rich
+male 256 Rich
+male 876 Rich
+female 524 Rich
+female 923 Rich
+male 98 Poor
+female 76 Poor
+female 39 Poor
+male 45 Poor
+male 100 Poor
+male 560 Rich
+female 77 Poor
+female 101 Rich

@@ -13,7 +13,7 @@ namespace ANN
     {
         public double LogisticSigmoid(double x)
         {
-            x = 1 / (1 - Math.Pow(Math.E, -x));
+            x = 1 / (1 + Math.Pow(Math.E, -x));
             return x;
         }
 
