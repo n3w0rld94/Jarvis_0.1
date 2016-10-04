@@ -57,8 +57,7 @@ namespace ANN
             Console.WriteLine("Dati standardizzati con successo. Ora inizializzo la Rete Neurale...");
             Console.ReadKey();
 
-            FFANN ffann = new FFANN(colTypes.Length, stdDataset[0].Length - Dataset[0].Length + 1); //Setting Network parameters.
-            ffann.build();  //Create & initialize the Network.
+            FFANN ffann = new FFANN(colTypes.Length, stdDataset[0].Length - Dataset[0].Length + 1); //Setting Network parameters & Creating it.
 
             Console.WriteLine("\nStruttura della Rete Neurale: \n");
             helper.ShowWeights(ffann);

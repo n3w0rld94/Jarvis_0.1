@@ -13,14 +13,12 @@ namespace ANN
     {
         public double LogisticSigmoid(double x)
         {
-            x = 1 / (1 + Math.Pow(Math.E, -x));
-            return x;
+            return (1 / (1 + Math.Pow(Math.E, -x)));
         }
 
         public double HiperTan(double x)
         {
-            x = (Math.Pow(Math.E, x) - Math.Pow(Math.E, -x)) / (Math.Pow(Math.E, x) + Math.Pow(Math.E, -x));
-            return x;
+            return ((Math.Pow(Math.E, x) - Math.Pow(Math.E, -x)) / (Math.Pow(Math.E, x) + Math.Pow(Math.E, -x)));
         }
 
         public bool HeivisideStep(double x)
@@ -29,14 +27,13 @@ namespace ANN
         }
 
         //ritorna il vettore probabilità
-        public Layer Softmax(Layer layer)
+        public void Softmax(Layer layer)
         {
             double TotalDivisor = 0;
-            for (int i = 0; i < layer.ffann.NumPercept[layer.ffann.NumLayers]; i++)
+            for (int i = 0; i < layer.perceptron.Length; i++)
                 TotalDivisor += Math.Pow(Math.E, layer.perceptron[i].getAction());
-            for (int i = 0; i < layer.ffann.NumPercept[layer.ffann.NumLayers]; i++)
+            for (int i = 0; i < layer.perceptron.Length; i++)
                 layer.perceptron[i].setAction(Math.Pow(Math.E, layer.perceptron[i].getAction()) / TotalDivisor);
-            return layer;
         }
     }
 }

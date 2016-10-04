@@ -12,28 +12,21 @@ namespace ANN
         Random rand = new Random(); 
         const double Bias = 1;      //Costante euristica (ricavata in trial & error)
         public Layer[] layer;
-        
 
-        //Costruttore standard, di comodo... per scrivere costruttore layer senza numCols e numOut e base(numCols, numOut)
-        public FFANN()
-        {
-
-        }
-
-        //Costruttore: legge da utente i parametri essenziali della Rete Neurale Feed-Forward
+        //Costruttore, imposta i parametri essenziali della Rete Neurale.
 
         public FFANN(int numCols, int numOut)
         {
-            NumPercept = new short[NumLayers + 1];
+            NumPercept = new short[NumLayers];
             
             NumPercept[0] = (short)(numCols-1);
-            NumPercept[1] = 3;
+            NumPercept[1] = 2;
             NumPercept[2] = (short)numOut;
-            NumPercept[NumLayers] = 0;
+            build();
         }
         
         //Inizializzo la rete neurale creando i vari strati e percettroni.
-        public void build()
+        private void build()
         {
             layer = new Layer[NumLayers];
             for (int i = 0; i < NumLayers; i++)
@@ -44,15 +37,13 @@ namespace ANN
         //End Build
         
 
-        //Dati i primi n-1 parametri, predice l'ultimo.
+        //Dati i primi n-1 parametri, predicono l'ultimo.
         public void PredictShow(double[] data)
         {
             readData(data);
             Activation act = new Activation();
             for(int i = 0; i < NumLayers-1; i++)
-            {
                 propagate(i, act);
-            }
             layer[NumLayers - 1].showLayerAction(); 
         }
 
@@ -61,13 +52,11 @@ namespace ANN
             readData(data);
             Activation act = new Activation();
             for (int i = 0; i < NumLayers - 1; i++)
-            {
                 propagate(i, act);
-            }
         }
+        //End Prediction.
 
-
-        //inserisce n-1 parametri nel 1o strato della rete (nel potenziale d'azione dei neuroni di input)
+        //inserisce n-1 parametri nel potenziale d'azione dei neuroni di input
         private void readData(double[] data)
         {
             for(int i = 0; i < NumPercept[0]; i++)
@@ -76,28 +65,25 @@ namespace ANN
             }
         }
 
-
         //Dato lo strato di partenza, propaga il potenziale d'azione nello strato successivo.
         private void propagate(int i, Activation act)
         {
             int j, k;
-            double sum = 0;                         //Accumulatore.
+            double sum;                             //Accumulatore.
             for (j = 0; j < NumPercept[i + 1]; j++) //Scorro i percettroni dello strato successivo.
             {
+                sum = 0; //Azzero l'accumulatore
                 for (k = 0; k < NumPercept[i]; k++) //Scorro i percettroni dello strato di partenza.
                     sum += layer[i].perceptron[k].getAction() * layer[i].perceptron[k].getSynapsys(j); /* moltiplica potenziale d'azione 
                                                                                                         * per peso sinaptico della connessione 
                                                                                                         * fra k e j.*/
-                
                 sum += Bias;//Se non lo capisci non continuare a leggere e ristudiati la teoria prima.
                 layer[i + 1].perceptron[j].setAction(act.LogisticSigmoid(sum)); /* Applica la funzione di costo e assegna il nuovo 
                                                                                  * potenziale d'azione.*/
-                sum = 0; //Azzero l'accumulatore                                                            
             }
-             /*per applicare il softmax, decommenta questo segmento.*/
-             /*if(i == NumLayers - 1)
+            /*per applicare il softmax, decommenta questo segmento.*/
+            /*if(i == NumLayers - 2)
                 act.Softmax(layer[i+1]);*/
-             
         }
     }
 
@@ -115,9 +101,7 @@ namespace ANN
             ffann = parent;
             perceptron = new Perceptron[ffann.NumPercept[N]];
             for (int i = 0; i < ffann.NumPercept[N]; i++)
-            {
                 perceptron[i] = new Perceptron(i, this, rand);
-            }
         }
 
         public void showLayerAction()
@@ -177,14 +161,18 @@ namespace ANN
         {
             
             layer = parent;
-            NumSynapses = layer.ffann.NumPercept[layer.N + 1];
+
+            if (layer.N < layer.ffann.NumLayers - 1)
+            {
+                NumSynapses = layer.ffann.NumPercept[layer.N + 1];
+                synapsys = new double[NumSynapses];
+            }
+            else
+                NumSynapses = 0;
+
             nOrder = i;
-            synapsys = new double[NumSynapses];
             for (int j = 0; j < NumSynapses; j++)
                 synapsys[j] = rand.NextDouble();
         }
     }
 }
-
-
-   
