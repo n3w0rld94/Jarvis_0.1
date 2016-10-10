@@ -1,0 +1,17 @@
+numeric categorical
+687 Rich
+95 Poor
+25 Poor
+567 Rich
+256 Rich
+876 Rich
+524 Rich
+923 Rich
+98 Poor
+76 Poor
+39 Poor
+45 Poor
+100 Poor
+560 Rich
+77 Poor
+101 Rich

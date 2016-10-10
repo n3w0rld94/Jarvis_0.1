@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ANN.Activation" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAQCAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cost Functions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.FFANN" Collapsed="true">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIEAAQAAAAAQAAAAAAAAAAAAAAAAAIACBABAAAg=</HashCode>
+      <FileName>FFANN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Layer" Collapsed="true">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>FFANN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Perceptron" Collapsed="true">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAIAAAAAACAQAAgBAAAAAAAAgAAAAgAAAAABAA=</HashCode>
+      <FileName>FFANN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Standardizer" Collapsed="true">
+    <Position X="1.25" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEACAAAAAAggAAABAAAAAAAAgAAAAAAAACIQAAAAAAA=</HashCode>
+      <FileName>Normalization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Train" Collapsed="true">
+    <Position X="7.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAABAAAAAAgAAAAAA=</HashCode>
+      <FileName>Training.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.RPropPlus" Collapsed="true">
+    <Position X="6" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Training.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Genetic" Collapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAEAAAAAAAAAAAAAAAAAAACACAAAAAAAA=</HashCode>
+      <FileName>Training.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Particle_swarm_optimization" Collapsed="true">
+    <Position X="0.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Training.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Executor" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="8" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ANN.Helpers" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Normalization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
