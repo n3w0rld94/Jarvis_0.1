@@ -7,7 +7,7 @@ namespace ANN
     public class FFANN
     {
         //Parametri della rete
-        public short NumLayers = 3; //Numero di strati.
+        public short NumLayers = 2; //Numero di strati.
         public short[] NumPercept;  //Numero di Percettroni in ciascuno strato (in ordine da strato 0 a numLayers-1).
         Random rand = new Random(); 
         const double Bias = 1;      //Costante euristica (ricavata in trial & error)
@@ -20,8 +20,8 @@ namespace ANN
             NumPercept = new short[NumLayers];
             
             NumPercept[0] = (short)(numCols-1);
-            NumPercept[1] = 2;
-            NumPercept[2] = (short)numOut;
+            //NumPercept[1] = 2;
+            NumPercept[NumLayers - 1] = (short)numOut;
             build();
         }
         
@@ -36,15 +36,14 @@ namespace ANN
         }
         //End Build
         
-
         //Dati i primi n-1 parametri, predicono l'ultimo.
         public void PredictShow(double[] data)
         {
             readData(data);
             Activation act = new Activation();
-            for(int i = 0; i < NumLayers-1; i++)
+            for(int i = 0; i < NumLayers - 1; i++)
                 propagate(i, act);
-            layer[NumLayers - 1].showLayerAction(); 
+            layer[NumLayers - 1].response(); 
         }
 
         public void Predict(double[] data)
@@ -60,9 +59,7 @@ namespace ANN
         private void readData(double[] data)
         {
             for(int i = 0; i < NumPercept[0]; i++)
-            {
                 layer[0].perceptron[i].setAction(data[i]);
-            }
         }
 
         //Dato lo strato di partenza, propaga il potenziale d'azione nello strato successivo.
@@ -107,10 +104,17 @@ namespace ANN
         public void showLayerAction()
         {
             Console.WriteLine("Layer " +  N + ":\n");
-            for(int i =0; i<ffann.NumPercept[N]; i++)
+            for(int i = 0; i < ffann.NumPercept[N]; i++)
                 Console.WriteLine(perceptron[i].getAction() + "\n");
         }
-
+        public void response()
+        {
+            string response;
+            if (perceptron[1].getAction() > perceptron[0].getAction())
+                response = "Poor";
+            else response = "Rich";
+            Console.Write(response);
+        }
         public void setLayerAction(Layer layer)
         {
             for (int i = 0; i < ffann.NumPercept[N]; i++)

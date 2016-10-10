@@ -74,13 +74,20 @@ namespace ANN
 
             Console.WriteLine("Allenamento avvenuto con successo, inserire i dati di prova per effettuare una predizione: ");
             string[] buff;
+            char c;
             do {
-                buffer = Console.ReadLine();
-            } while (buffer.Length == 0);
-            buff = buffer.Split(' ');
-            data = std.GetStandardRow(buff);
-            ffann.PredictShow(data);
-            Console.ReadKey();
+                do {
+                    buffer = Console.ReadLine();
+                    buff = buffer.Split(' ');
+                } while (buff.Length != colTypes.Length - 1);
+                
+            
+                
+                data = std.GetStandardRow(buff);
+                ffann.PredictShow(data);
+                Console.ReadKey();
+                Console.WriteLine("\nProvare ancora? 'y' = yes, others = no: ");
+            } while (Console.ReadLine().Equals("y"));
         }
     }
 }

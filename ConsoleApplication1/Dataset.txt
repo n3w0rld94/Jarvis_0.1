@@ -1,17 +1,17 @@
-categorical numeric categorical
-male 687 Rich
-female 95 Poor
-female 25 Poor
-male 567 Rich
-male 256 Rich
-male 876 Rich
-female 524 Rich
-female 923 Rich
-male 98 Poor
-female 76 Poor
-female 39 Poor
-male 45 Poor
-male 100 Poor
-male 560 Rich
-female 77 Poor
-female 101 Rich
+numeric categorical
+687 Rich
+95 Poor
+25 Poor
+567 Rich
+256 Rich
+876 Rich
+524 Rich
+923 Rich
+98 Poor
+76 Poor
+39 Poor
+45 Poor
+100 Poor
+560 Rich
+77 Poor
+101 Rich
