@@ -11,7 +11,6 @@ namespace Tesi_di_Laurea
         PromptBuilder pbuilder = new PromptBuilder();
         SpeechRecognitionEngine Jarvis_read = new SpeechRecognitionEngine();
         string name = "User";
-        int n=0;
         public Form1()
         {
             InitializeComponent();
